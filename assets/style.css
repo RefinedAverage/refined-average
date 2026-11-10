@@ -42,9 +42,7 @@ a {
   margin-inline: auto;
 }
 
-/* ========================================
-   HEADER
-======================================== */
+/* HEADER */
 
 .site-header {
   height: 84px;
@@ -73,9 +71,7 @@ a {
   color: #fff;
 }
 
-/* ========================================
-   LOGO — ALWAYS RED
-======================================== */
+/* LOGO — ALWAYS RED */
 
 .mark {
   width: 29px;
@@ -113,14 +109,10 @@ a {
   stroke: var(--red) !important;
 }
 
-/* Footer logo */
-
 .brand.small .mark {
   width: 22px;
   height: 22px;
 }
-
-/* Force logo consistency on all pages */
 
 .site-header .mark,
 .footer .mark,
@@ -134,9 +126,7 @@ a {
   stroke: #e21b23 !important;
 }
 
-/* ========================================
-   NAVIGATION
-======================================== */
+/* NAVIGATION */
 
 .nav {
   display: flex;
@@ -173,9 +163,7 @@ a {
   cursor: pointer;
 }
 
-/* ========================================
-   HERO
-======================================== */
+/* HERO */
 
 .hero {
   min-height: 650px;
@@ -215,11 +203,14 @@ a {
   box-shadow: 0 0 14px #e21b2370;
 }
 
+/* UPDATED HEADING SPACING */
+
 .hero h1,
 .page-hero h1 {
-  font: 700 clamp(58px,9vw,112px)/.98 'Space Grotesk', sans-serif;
-  letter-spacing: -.065em;
+  font: 700 clamp(58px,9vw,112px)/1.08 'Space Grotesk', sans-serif;
+  letter-spacing: -.035em;
   margin: 24px 0;
+  overflow-wrap: normal;
 }
 
 .hero h1 em,
@@ -288,9 +279,7 @@ blockquote em {
   background: var(--red);
 }
 
-/* ========================================
-   INTRO BAND
-======================================== */
+/* INTRO BAND */
 
 .intro-band {
   background: #101010;
@@ -330,9 +319,7 @@ blockquote em {
   margin: 0;
 }
 
-/* ========================================
-   PILLARS
-======================================== */
+/* PILLARS */
 
 .pillars {
   padding-block: 100px;
@@ -409,9 +396,7 @@ blockquote em {
   margin-top: 22px;
 }
 
-/* ========================================
-   QUOTE
-======================================== */
+/* QUOTE */
 
 .quote-section {
   background: #e21b23;
@@ -444,9 +429,7 @@ blockquote em {
   letter-spacing: .25em;
 }
 
-/* ========================================
-   CLOSING
-======================================== */
+/* CLOSING */
 
 .closing {
   padding-block: 80px;
@@ -460,26 +443,14 @@ blockquote em {
   margin-bottom: 10px;
 }
 
-/* ========================================
-   PAGE HERO
-======================================== */
+/* PAGE HERO */
 
 .page-hero {
   padding-block: 120px 100px;
   min-height: 450px;
 }
 
-.page-hero h1 {
-  font-size: clamp(54px,8vw,92px);
-}
-
-.page-hero .hero-copy {
-  margin-bottom: 25px;
-}
-
-/* ========================================
-   ABOUT
-======================================== */
+/* ABOUT */
 
 .prose-grid {
   display: grid;
@@ -523,9 +494,7 @@ blockquote em {
   font-size: 13px;
 }
 
-/* ========================================
-   VIDEOS
-======================================== */
+/* VIDEOS */
 
 .video-placeholder {
   display: flex;
@@ -551,9 +520,7 @@ blockquote em {
   margin: 0 0 8px;
 }
 
-/* ========================================
-   TOPICS
-======================================== */
+/* TOPICS */
 
 .topic-list {
   padding-block: 30px 100px;
@@ -567,14 +534,18 @@ blockquote em {
   scroll-margin-top: 110px;
 }
 
-.topic-no {
-  color: var(--red);
-  font: 500 14px 'Space Grotesk';
-}
+/* UPDATED TOPIC HEADING SPACING */
 
 .topic h2 {
   font: 600 40px 'Space Grotesk';
+  letter-spacing: -.025em;
+  line-height: 1.2;
   margin: 0 0 10px;
+}
+
+.topic-no {
+  color: var(--red);
+  font: 500 14px 'Space Grotesk';
 }
 
 .topic p {
@@ -596,9 +567,7 @@ blockquote em {
   font-size: 10px;
 }
 
-/* ========================================
-   CONTACT
-======================================== */
+/* CONTACT */
 
 .contact-card {
   display: flex;
@@ -621,9 +590,7 @@ blockquote em {
   color: var(--red);
 }
 
-/* ========================================
-   FOOTER
-======================================== */
+/* FOOTER */
 
 .footer {
   border-top: 1px solid var(--line);
@@ -649,9 +616,7 @@ blockquote em {
   color: #ddd;
 }
 
-/* ========================================
-   SCROLL ANIMATION SUPPORT
-======================================== */
+/* ANIMATIONS */
 
 .ra-reveal {
   opacity: 0;
@@ -671,9 +636,7 @@ main img.ra-reveal.ra-visible {
   transform: translateY(0) scale(1);
 }
 
-/* ========================================
-   MOBILE
-======================================== */
+/* MOBILE */
 
 @media(max-width:760px) {
 
@@ -790,11 +753,16 @@ main img.ra-reveal.ra-visible {
   .quote-section {
     padding: 70px 0;
   }
+
+  .hero h1,
+  .page-hero h1 {
+    font-size: clamp(45px, 10vw, 72px);
+    letter-spacing: -.025em;
+    line-height: 1.12;
+  }
 }
 
-/* ========================================
-   ACCESSIBILITY
-======================================== */
+/* ACCESSIBILITY */
 
 @media(prefers-reduced-motion: reduce) {
   html {

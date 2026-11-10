@@ -1,8 +1,8 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   const elements = document.querySelectorAll(
-    "main h1, main h2, main h3, main p, main img, main article, main .card, main li, main figure, main blockquote"
-  );
+  "main section, main section > *, main h1, main h2, main h3, main p, main img, main article, main .card, main li, main figure, main blockquote, main .eyebrow, main .actions, main .hero-note"
+);
 
   elements.forEach((element, index) => {
     element.classList.add("ra-reveal");

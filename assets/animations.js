@@ -1,19 +1,5 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-  let lastScrollY = window.scrollY;
-  let scrollDirection = "down";
-
-  window.addEventListener("scroll", () => {
-    const currentY = window.scrollY;
-
-    if (currentY > lastScrollY) {
-      scrollDirection = "down";
-    } else if (currentY < lastScrollY) {
-      scrollDirection = "up";
-    }
-
-    lastScrollY = currentY;
-  }, { passive: true });
 
   const elements = document.querySelectorAll(
     "main section, main section > *, main h1, main h2, main h3, main p, main img, main article, main .card, main li, main figure, main blockquote, main .eyebrow, main .actions, main .hero-note"
@@ -29,22 +15,30 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const observer = new IntersectionObserver((entries) => {
+
     entries.forEach((entry) => {
       const element = entry.target;
 
       if (entry.isIntersecting) {
+
         element.classList.remove("ra-visible");
 
-        if (scrollDirection === "up") {
+        const viewportTop = entry.rootBounds
+          ? entry.rootBounds.top
+          : 0;
+
+        const enteringFromTop =
+          entry.boundingClientRect.top < viewportTop;
+
+        if (enteringFromTop) {
           element.classList.add("ra-from-top");
         } else {
           element.classList.remove("ra-from-top");
         }
 
-        // Force browser to register starting position
+        // Register the starting position
         void element.offsetHeight;
 
-        // Start the animation
         requestAnimationFrame(() => {
           element.classList.add("ra-visible");
         });
@@ -53,10 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
         element.classList.remove("ra-visible");
       }
     });
+
   }, {
     threshold: 0.12,
     rootMargin: "0px 0px -40px 0px"
   });
 
   elements.forEach(element => observer.observe(element));
+
 });

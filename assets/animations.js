@@ -1,11 +1,15 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-  const sections = document.querySelectorAll("main > section");
+  // Select individual content elements across all website pages
+  const elements = document.querySelectorAll(
+    "main > section, main .pillar-card, main .value-row, main .closing, main img"
+  );
 
   let lastScrollY = window.scrollY;
   let scrollDirection = "down";
 
+  // Detect scroll direction
   window.addEventListener("scroll", () => {
     const currentY = window.scrollY;
 
@@ -18,32 +22,35 @@ document.addEventListener("DOMContentLoaded", () => {
     lastScrollY = currentY;
   }, { passive: true });
 
-  sections.forEach(section => {
-    section.classList.add("ra-reveal");
+  // Apply reveal animation
+  elements.forEach(element => {
+    element.classList.add("ra-reveal");
   });
 
+  // Observe elements entering and leaving the viewport
   const observer = new IntersectionObserver(entries => {
 
     entries.forEach(entry => {
-      const section = entry.target;
+      const element = entry.target;
 
       if (entry.isIntersecting) {
 
-        section.classList.remove("ra-visible", "ra-from-top");
+        element.classList.remove("ra-visible", "ra-from-top");
 
         if (scrollDirection === "up") {
-          section.classList.add("ra-from-top");
+          element.classList.add("ra-from-top");
         }
 
-        void section.offsetHeight;
+        void element.offsetHeight;
 
         requestAnimationFrame(() => {
-          section.classList.add("ra-visible");
+          element.classList.add("ra-visible");
         });
 
       } else {
-        section.classList.remove("ra-visible");
+        element.classList.remove("ra-visible");
       }
+
     });
 
   }, {
@@ -51,8 +58,8 @@ document.addEventListener("DOMContentLoaded", () => {
     rootMargin: "0px"
   });
 
-  sections.forEach(section => {
-    observer.observe(section);
+  elements.forEach(element => {
+    observer.observe(element);
   });
 
 });

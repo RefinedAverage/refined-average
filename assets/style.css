@@ -188,17 +188,43 @@ main img.ra-reveal.ra-from-top {
 }
 
 /* Final visible position */
-.ra-reveal.ra-visible,
+
+/* RA DIRECTION-AWARE SCROLL ANIMATION */
+
+.ra-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.ra-reveal.ra-from-top {
+  transform: translateY(-28px);
+}
+
+.ra-reveal.ra-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+main img.ra-reveal {
+  transform: translateY(22px) scale(0.98);
+}
+
+main img.ra-reveal.ra-from-top {
+  transform: translateY(-22px) scale(0.98);
+}
+
 main img.ra-reveal.ra-visible {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-/* Reduced motion accessibility */
 @media (prefers-reduced-motion: reduce) {
   .ra-reveal,
   .ra-reveal.ra-from-top,
-  main img.ra-reveal.ra-from-top {
+  .ra-reveal.ra-visible {
     opacity: 1;
     transform: none;
     transition: none;

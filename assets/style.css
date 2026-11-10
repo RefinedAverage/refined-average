@@ -3,37 +3,30 @@
    REFINED AVERAGE — SCROLL ANIMATIONS
 ======================================== */
 
-/* Main section reveal */
 .ra-reveal {
   opacity: 0;
-  transform: translateY(90px) scale(0.985);
+  transform: translateY(45px);
   transition:
-    opacity 1.5s ease,
-    transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
+    opacity 1.2s ease,
+    transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Entering from the top while scrolling upward */
 .ra-reveal.ra-from-top {
-  transform: translateY(-90px) scale(0.985);
+  transform: translateY(-45px);
 }
 
-/* Visible state */
 .ra-reveal.ra-visible {
   opacity: 1;
-  transform: translateY(0) scale(1);
+  transform: translateY(0);
 }
 
-/* Image reveal */
+/* Image animations */
 main img.ra-reveal {
-  transform: translateY(45px) scale(0.94);
-  transition:
-    opacity 1.4s ease,
-    transform 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(25px) scale(0.98);
 }
 
 main img.ra-reveal.ra-from-top {
-  transform: translateY(-45px) scale(0.94);
+  transform: translateY(-25px) scale(0.98);
 }
 
 main img.ra-reveal.ra-visible {
@@ -41,17 +34,13 @@ main img.ra-reveal.ra-visible {
   transform: translateY(0) scale(1);
 }
 
-/* Accessibility: respect reduced-motion preference */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .ra-reveal,
   .ra-reveal.ra-from-top,
-  .ra-reveal.ra-visible,
-  main img.ra-reveal,
-  main img.ra-reveal.ra-from-top,
-  main img.ra-reveal.ra-visible {
+  .ra-reveal.ra-visible {
     opacity: 1;
     transform: none;
     transition: none;
-    will-change: auto;
   }
 }

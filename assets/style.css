@@ -113,14 +113,14 @@ article:hover {
 
 .ra-reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition:
-    opacity 0.75s ease,
-    transform 0.75s cubic-bezier(0.2, 0.65, 0.3, 1);
+  transform: translateY(55px);
+transition:
+  opacity 1.3s ease,
+  transform 1.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .ra-reveal.ra-from-top {
-  transform: translateY(-28px);
+  transform: translateY(-55px);
 }
 
 .ra-reveal.ra-visible {

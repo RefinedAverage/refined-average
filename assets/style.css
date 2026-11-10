@@ -40,3 +40,97 @@
   visibility: visible !important;
   opacity: 1 !important;
 }
+
+/* =================================
+   REFINED AVERAGE — PREMIUM MOTION
+================================= */
+
+/* Smooth page entrance */
+body {
+  animation: raPageEnter 0.7s ease both;
+}
+
+@keyframes raPageEnter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header entrance */
+.site-header {
+  animation: raSlideDown 0.8s ease both;
+}
+
+@keyframes raSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main sections appear smoothly */
+main > * {
+  animation: raFadeUp 0.8s ease both;
+}
+
+main > *:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+main > *:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+main > *:nth-child(4) {
+  animation-delay: 0.36s;
+}
+
+@keyframes raFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth interactive transitions */
+a, button, .brand, .nav a,
+article, .card {
+  transition:
+    color 0.3s ease,
+    background 0.3s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+/* Navigation hover */
+.nav a:hover {
+  color: var(--red);
+}
+
+/* Card hover */
+.card:hover,
+article:hover {
+  transform: translateY(-4px);
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

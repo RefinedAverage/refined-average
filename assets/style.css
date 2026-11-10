@@ -169,3 +169,38 @@ main img.ra-reveal.ra-visible {
     transition: none;
   }
 }
+
+/* RA DIRECTION-AWARE SCROLL ANIMATION */
+
+/* Scrolling down: appear from below */
+.ra-reveal {
+  transform: translateY(28px);
+}
+
+/* Scrolling up: appear from above */
+.ra-reveal.ra-from-top {
+  transform: translateY(-28px);
+}
+
+/* Images scrolling up */
+main img.ra-reveal.ra-from-top {
+  transform: translateY(-22px) scale(0.98);
+}
+
+/* Final visible position */
+.ra-reveal.ra-visible,
+main img.ra-reveal.ra-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .ra-reveal,
+  .ra-reveal.ra-from-top,
+  main img.ra-reveal.ra-from-top {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

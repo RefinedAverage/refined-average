@@ -1,6 +1,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+/* ========================================
+   REFINED AVERAGE — MASTER STYLESHEET
+======================================== */
+
 :root {
   --bg: #080808;
   --panel: #111;
@@ -38,7 +42,9 @@ a {
   margin-inline: auto;
 }
 
-/* HEADER */
+/* ========================================
+   HEADER
+======================================== */
 
 .site-header {
   height: 84px;
@@ -67,7 +73,9 @@ a {
   color: #fff;
 }
 
-/* CLEAN LOGO */
+/* ========================================
+   LOGO — ALWAYS RED
+======================================== */
 
 .mark {
   width: 29px;
@@ -82,6 +90,7 @@ a {
   background: transparent !important;
   box-shadow: none !important;
   overflow: visible !important;
+  color: var(--red) !important;
 }
 
 .mark::before,
@@ -97,9 +106,37 @@ a {
   height: 100%;
   overflow: visible;
   background: transparent !important;
+  color: var(--red) !important;
 }
 
-/* NAVIGATION */
+.mark svg path {
+  stroke: var(--red) !important;
+}
+
+/* Footer logo */
+
+.brand.small .mark {
+  width: 22px;
+  height: 22px;
+}
+
+/* Force logo consistency on all pages */
+
+.site-header .mark,
+.footer .mark,
+.brand .mark {
+  color: #e21b23 !important;
+}
+
+.site-header .mark svg path,
+.footer .mark svg path,
+.brand .mark svg path {
+  stroke: #e21b23 !important;
+}
+
+/* ========================================
+   NAVIGATION
+======================================== */
 
 .nav {
   display: flex;
@@ -136,7 +173,9 @@ a {
   cursor: pointer;
 }
 
-/* HERO */
+/* ========================================
+   HERO
+======================================== */
 
 .hero {
   min-height: 650px;
@@ -249,7 +288,9 @@ blockquote em {
   background: var(--red);
 }
 
-/* INTRO BAND */
+/* ========================================
+   INTRO BAND
+======================================== */
 
 .intro-band {
   background: #101010;
@@ -289,7 +330,9 @@ blockquote em {
   margin: 0;
 }
 
-/* PILLARS */
+/* ========================================
+   PILLARS
+======================================== */
 
 .pillars {
   padding-block: 100px;
@@ -366,7 +409,9 @@ blockquote em {
   margin-top: 22px;
 }
 
-/* QUOTE */
+/* ========================================
+   QUOTE
+======================================== */
 
 .quote-section {
   background: #e21b23;
@@ -399,7 +444,9 @@ blockquote em {
   letter-spacing: .25em;
 }
 
-/* CLOSING */
+/* ========================================
+   CLOSING
+======================================== */
 
 .closing {
   padding-block: 80px;
@@ -413,7 +460,9 @@ blockquote em {
   margin-bottom: 10px;
 }
 
-/* PAGE HERO */
+/* ========================================
+   PAGE HERO
+======================================== */
 
 .page-hero {
   padding-block: 120px 100px;
@@ -428,7 +477,9 @@ blockquote em {
   margin-bottom: 25px;
 }
 
-/* ABOUT */
+/* ========================================
+   ABOUT
+======================================== */
 
 .prose-grid {
   display: grid;
@@ -472,7 +523,9 @@ blockquote em {
   font-size: 13px;
 }
 
-/* VIDEOS */
+/* ========================================
+   VIDEOS
+======================================== */
 
 .video-placeholder {
   display: flex;
@@ -498,7 +551,9 @@ blockquote em {
   margin: 0 0 8px;
 }
 
-/* TOPICS */
+/* ========================================
+   TOPICS
+======================================== */
 
 .topic-list {
   padding-block: 30px 100px;
@@ -541,7 +596,9 @@ blockquote em {
   font-size: 10px;
 }
 
-/* CONTACT */
+/* ========================================
+   CONTACT
+======================================== */
 
 .contact-card {
   display: flex;
@@ -564,7 +621,9 @@ blockquote em {
   color: var(--red);
 }
 
-/* FOOTER */
+/* ========================================
+   FOOTER
+======================================== */
 
 .footer {
   border-top: 1px solid var(--line);
@@ -590,12 +649,9 @@ blockquote em {
   color: #ddd;
 }
 
-.brand.small .mark {
-  width: 22px;
-  height: 22px;
-}
-
-/* ANIMATIONS */
+/* ========================================
+   SCROLL ANIMATION SUPPORT
+======================================== */
 
 .ra-reveal {
   opacity: 0;
@@ -615,9 +671,12 @@ main img.ra-reveal.ra-visible {
   transform: translateY(0) scale(1);
 }
 
-/* MOBILE */
+/* ========================================
+   MOBILE
+======================================== */
 
 @media(max-width:760px) {
+
   .site-header {
     height: 70px;
   }
@@ -733,7 +792,9 @@ main img.ra-reveal.ra-visible {
   }
 }
 
-/* ACCESSIBILITY */
+/* ========================================
+   ACCESSIBILITY
+======================================== */
 
 @media(prefers-reduced-motion: reduce) {
   html {

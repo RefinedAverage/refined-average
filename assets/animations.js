@@ -1,10 +1,11 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
+  const sections = document.querySelectorAll("main > section");
+
   let lastScrollY = window.scrollY;
   let scrollDirection = "down";
 
-  // Track actual scroll direction
   window.addEventListener("scroll", () => {
     const currentY = window.scrollY;
 
@@ -17,29 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
     lastScrollY = currentY;
   }, { passive: true });
 
-  // Animate only main sections, not their children
-  const sections = document.querySelectorAll("main > section");
-
   sections.forEach(section => {
     section.classList.add("ra-reveal");
   });
 
-  const observer = new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
 
     entries.forEach(entry => {
       const section = entry.target;
 
       if (entry.isIntersecting) {
 
-        section.classList.remove("ra-visible");
+        section.classList.remove("ra-visible", "ra-from-top");
 
         if (scrollDirection === "up") {
           section.classList.add("ra-from-top");
-        } else {
-          section.classList.remove("ra-from-top");
         }
 
-        // Register starting position
         void section.offsetHeight;
 
         requestAnimationFrame(() => {
@@ -53,9 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }, {
     threshold: 0.05,
-    rootMargin: "0px 0px -40px 0px"
+    rootMargin: "0px"
   });
 
-  sections.forEach(section => observer.observe(section));
+  sections.forEach(section => {
+    observer.observe(section);
+  });
 
 });

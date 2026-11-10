@@ -1,6 +1,118 @@
+
 /* ========================================
-   REFINED AVERAGE — CLEAN LOGO
+   REFINED AVERAGE — COMPLETE STYLESHEET
+   Premium Minimal Design System
 ======================================== */
+
+/* ---------- ROOT ---------- */
+
+:root {
+  --bg: #ffffff;
+  --surface: #f6f7f9;
+  --surface-dark: #111827;
+  --text: #171b25;
+  --muted: #687080;
+  --accent: #71839f;
+  --accent-dark: #536783;
+  --border: #e7e9ed;
+
+  --font-main: 'DM Sans', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+
+  --container: 1120px;
+  --header-height: 78px;
+}
+
+/* ---------- RESET ---------- */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ---------- GLOBAL LAYOUT ---------- */
+
+.wrap {
+  width: min(var(--container), calc(100% - 64px));
+  margin-inline: auto;
+}
+
+section {
+  position: relative;
+}
+
+.section-kicker,
+.eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--accent-dark);
+}
+
+/* ---------- HEADER ---------- */
+
+.site-header {
+  height: var(--header-height);
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.94);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 1.3px;
+  white-space: nowrap;
+}
+
+.brand b {
+  font-weight: 700;
+}
 
 .mark {
   width: 29px;
@@ -10,37 +122,400 @@
   justify-content: center;
   flex: none;
   position: relative;
-
-  border: none !important;
-  border-radius: 0 !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  overflow: visible !important;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
-/* Remove unwanted decorative elements */
-.mark::before,
-.mark::after,
-.mark i {
-  content: none !important;
-  display: none !important;
-}
-
-/* SVG logo */
 .mark svg {
   display: block;
   width: 100%;
   height: 100%;
-  overflow: visible;
-  border: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  background: transparent !important;
 }
 
-/* Footer logo size */
 .brand.small .mark {
   width: 22px;
   height: 22px;
+}
+
+.menu-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  font-size: 25px;
+  cursor: pointer;
+  color: var(--text);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.nav a {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color .25s ease;
+  position: relative;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: var(--text);
+}
+
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -9px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* ---------- HERO ---------- */
+
+.page-hero {
+  padding-top: 125px;
+  padding-bottom: 120px;
+  max-width: 1120px;
+}
+
+.dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 9px;
+}
+
+h1,
+h2,
+h3,
+blockquote {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: -1.5px;
+}
+
+.page-hero h1 {
+  font-size: clamp(48px, 7vw, 86px);
+  margin-top: 30px;
+  max-width: 850px;
+}
+
+h1 em,
+h2 em,
+blockquote em {
+  color: var(--accent);
+  font-style: normal;
+}
+
+.hero-copy {
+  max-width: 570px;
+  margin-top: 27px;
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
+/* ---------- INTRO BAND ---------- */
+
+.intro-band {
+  background: var(--surface);
+  padding: 105px 0;
+}
+
+.prose-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 1.5fr;
+  gap: 80px;
+}
+
+.prose-grid h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  max-width: 600px;
+  margin-bottom: 30px;
+}
+
+.prose-grid p:not(.section-kicker) {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 2;
+  margin-bottom: 20px;
+}
+
+/* ---------- VALUES ---------- */
+
+.values {
+  padding-top: 110px;
+  padding-bottom: 120px;
+}
+
+.values > .section-kicker {
+  margin-bottom: 45px;
+}
+
+.value-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 30px;
+  padding: 36px 0;
+  border-top: 1px solid var(--border);
+}
+
+.value-row > span {
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.value-row h3 {
+  font-size: 25px;
+  margin-bottom: 10px;
+  letter-spacing: -.5px;
+}
+
+.value-row p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/* ---------- QUOTE ---------- */
+
+.quote-section {
+  background: var(--surface-dark);
+  color: white;
+  padding: 120px 0;
+}
+
+.quote-inner blockquote {
+  font-size: clamp(36px, 6vw, 68px);
+  max-width: 850px;
+}
+
+.quote-inner > p {
+  margin-top: 38px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #aab3c2;
+  font-weight: 700;
+}
+
+/* ---------- FOOTER ---------- */
+
+.footer {
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  padding: 30px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.footer-inner > span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.footer-inner > div {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-inner > div a {
+  color: var(--muted);
+  font-size: 12px;
+  transition: color .2s ease;
+}
+
+.footer-inner > div a:hover {
+  color: var(--text);
+}
+
+/* ---------- GENERAL BUTTONS ---------- */
+
+.btn,
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 14px 25px;
+  background: var(--text);
+  color: white;
+  border: 1px solid var(--text);
+  font-size: 12px;
+  font-weight: 600;
+  transition: .3s ease;
+  cursor: pointer;
+}
+
+.btn:hover,
+.button:hover {
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  transform: translateY(-2px);
+}
+
+/* ---------- ANIMATION SUPPORT ---------- */
+
+.ra-reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition:
+    opacity 1s ease,
+    transform 1s cubic-bezier(.16, 1, .3, 1);
+}
+
+.ra-reveal.ra-from-top {
+  transform: translateY(-35px);
+}
+
+.ra-reveal.ra-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+main img.ra-reveal.ra-visible {
+  transform: translateY(0) scale(1);
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+
+  :root {
+    --header-height: 68px;
+  }
+
+  .wrap {
+    width: calc(100% - 40px);
+  }
+
+  .site-header {
+    padding: 0 20px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 25px 25px 30px;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 23px;
+  }
+
+  .nav.open {
+    display: flex;
+  }
+
+  .nav a.active::after {
+    bottom: -5px;
+  }
+
+  .page-hero {
+    padding-top: 90px;
+    padding-bottom: 85px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(45px, 11vw, 65px);
+  }
+
+  .hero-copy {
+    font-size: 15px;
+  }
+
+  .intro-band {
+    padding: 75px 0;
+  }
+
+  .prose-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .prose-grid h2 {
+    font-size: 36px;
+  }
+
+  .values {
+    padding-top: 80px;
+    padding-bottom: 85px;
+  }
+
+  .value-row {
+    grid-template-columns: 45px 1fr;
+    gap: 15px;
+    padding: 27px 0;
+  }
+
+  .value-row h3 {
+    font-size: 21px;
+  }
+
+  .quote-section {
+    padding: 85px 0;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .brand {
+    font-size: 12px;
+    gap: 8px;
+  }
+
+  .page-hero h1 {
+    font-size: 44px;
+  }
+
+  .value-row h3 {
+    font-size: 19px;
+  }
+}
+
+/* ---------- ACCESSIBILITY ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+
+  .ra-reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

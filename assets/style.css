@@ -134,3 +134,38 @@ article:hover {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* RA SCROLL REVEAL ANIMATIONS */
+
+.ra-reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s ease,
+    transform 0.75s cubic-bezier(0.2, 0.65, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.ra-reveal.ra-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Images get a subtle reveal */
+main img.ra-reveal {
+  transform: translateY(22px) scale(0.98);
+}
+
+main img.ra-reveal.ra-visible {
+  transform: translateY(0) scale(1);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .ra-reveal,
+  main img.ra-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

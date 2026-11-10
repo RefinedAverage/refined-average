@@ -3,17 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
   let lastScrollY = window.scrollY;
   let scrollDirection = "down";
 
-  // Detect scrolling direction
   window.addEventListener("scroll", () => {
-    const currentScrollY = window.scrollY;
+    const currentY = window.scrollY;
 
-    if (currentScrollY > lastScrollY) {
+    if (currentY > lastScrollY) {
       scrollDirection = "down";
-    } else if (currentScrollY < lastScrollY) {
+    } else if (currentY < lastScrollY) {
       scrollDirection = "up";
     }
 
-    lastScrollY = currentScrollY;
+    lastScrollY = currentY;
   }, { passive: true });
 
   const elements = document.querySelectorAll(
@@ -29,32 +28,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const element = entry.target;
 
-          if (scrollDirection === "up") {
-            entry.target.classList.add("ra-from-top");
-          } else {
-            entry.target.classList.remove("ra-from-top");
-          }
+      if (entry.isIntersecting) {
+        element.classList.remove("ra-visible");
 
-          entry.target.classList.add("ra-visible");
-
+        if (scrollDirection === "up") {
+          element.classList.add("ra-from-top");
         } else {
-          entry.target.classList.remove("ra-visible");
+          element.classList.remove("ra-from-top");
         }
-      });
-    },
-    {
-      threshold: 0.12,
-      rootMargin: "0px 0px -40px 0px"
-    }
-  );
 
-  elements.forEach((element) => {
-    observer.observe(element);
+        // Force browser to register starting position
+        void element.offsetHeight;
+
+        // Start the animation
+        requestAnimationFrame(() => {
+          element.classList.add("ra-visible");
+        });
+
+      } else {
+        element.classList.remove("ra-visible");
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: "0px 0px -40px 0px"
   });
-});
 
+  elements.forEach(element => observer.observe(element));
+});

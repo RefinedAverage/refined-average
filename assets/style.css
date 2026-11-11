@@ -49,3 +49,8 @@ body{scrollbar-gutter:stable;}
 .hero-art,.page-hero-art,.interlude-art,.pillar-visual,.topic-detail-visual,.about-visual-object,.film-feature-art{contain:layout paint}
 @media(max-width:700px){.pillar-card,.film-feature,.contact-side,.watch-card,.method-step,.principle{backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.method-step:hover,.principle:hover{transform:none}.watch-card{min-height:0}.section-pad:before,.topic-detail-section:before,.interlude:before,.about-visual-band:before,.contact-bottom:before{opacity:.6}}
 @media(prefers-reduced-motion:reduce){.reveal{will-change:auto}.pillar-card,.watch-card,.method-step,.principle{transition:none}}
+
+/* Keep intentional 2D labels and controls above the 3D canvas */
+.topic-orbit,.art-halo,.interlude-ring,.interlude-orb,.stack{position:relative;z-index:3}
+.topic-center,.film-frame,.contact-core{position:relative;z-index:4}
+.film-play{z-index:5}

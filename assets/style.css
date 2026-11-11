@@ -92,3 +92,10 @@ body{scrollbar-gutter:stable;}
 .topic-detail-visual:after{z-index:1}
 @media(max-width:700px){.glass-specimen{width:clamp(150px,52vw,220px)}.glass-specimen-large{width:clamp(190px,66vw,270px)}.topic-detail-visual .glass-specimen{width:clamp(185px,60vw,245px)}.glass-film-frame{width:78%;aspect-ratio:1.3}.film-feature-subject{width:58%}}
 @media(prefers-reduced-motion:reduce){.glass-specimen,.film-feature-subject{animation:none;transition:none}}
+
+/* Keep the transparent cutouts and glass rim above the decorative 3D canvas */
+.glass-specimen,.film-frame,.film-feature-subject{z-index:5}
+.glass-specimen .subject-cutout{z-index:2}
+.glass-specimen:before{z-index:3}
+.glass-specimen:after{z-index:4}
+.glass-specimen .glass-edge{z-index:5}

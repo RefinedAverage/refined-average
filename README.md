@@ -1,29 +1,17 @@
-# Refined Average website
+# Refined Average — Lusion-inspired rebuild
 
-A responsive, multi-page static website for the Refined Average brand.
+A responsive multi-page editorial experience for Refined Average.
 
-## Pages
-- `index.html` — Home
-- `about.html` — Brand philosophy
-- `videos.html` — YouTube channel landing page
-- `topics.html` — Content pillars
-- `contact.html` — Contact details
+Pages: Home, Philosophy, Explore (Discipline / Psychology / Mindset), Films, Connect.
 
-## Preview locally
-Open `index.html` in a browser. No build tools or dependencies are required.
+Technical notes:
+- Static HTML, CSS and vanilla JavaScript; no build step.
+- Procedural canvas atmosphere and CSS 3D artwork generated locally in the browser.
+- Scroll reveals re-trigger when sections leave and re-enter the viewport.
+- Continuous ambient motion respects reduced-motion preferences.
+- Responsive navigation, scroll progress, pointer parallax and mobile layouts.
+- No third-party animation library or WebGL dependency.
 
-## Free deployment with GitHub Pages
-1. Create or sign in to a GitHub account.
-2. Create a new **public** repository, for example `refined-average`.
-3. Upload all files and folders from this project (keep the `assets` folder).
-4. In the repository, open **Settings → Pages**.
-5. Under Build and deployment, choose **Deploy from a branch**, select `main` and `/ (root)`, then Save.
-6. GitHub will provide a free `github.io` address after publishing.
+Deployment: review the lusion-inspired-rebuild branch before merging to main.
 
-## Before publishing
-- Confirm the contact email shown on `contact.html`.
-- Replace the YouTube channel URL if your handle changes.
-- On `videos.html`, add embedded videos or a curated video grid as the channel library grows.
-- For a custom domain, purchase a domain separately; GitHub Pages hosting remains free.
-
-The website uses Google Fonts when online and falls back to system fonts if unavailable.
+Brand: near-black, graphite, warm white and signature red. Typography: Manrope and DM Sans. Contact: socialwork.adi@gmail.com. YouTube: https://www.youtube.com/@RefinedAverage.

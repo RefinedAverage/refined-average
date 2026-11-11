@@ -60,3 +60,6 @@ body{scrollbar-gutter:stable;}
 .interlude-ring{position:relative;z-index:3}
 .topic-center,.film-frame,.contact-core{z-index:4}
 .film-play{z-index:5}
+
+/* Restore absolute placement for the existing decorative elements */
+.stack,.art-halo,.interlude-orb,.topic-orbit{position:absolute}

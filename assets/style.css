@@ -54,3 +54,9 @@ body{scrollbar-gutter:stable;}
 .topic-orbit,.art-halo,.interlude-ring,.interlude-orb,.stack{position:relative;z-index:3}
 .topic-center,.film-frame,.contact-core{position:relative;z-index:4}
 .film-play{z-index:5}
+
+/* Correct stacking without changing the original geometry positioning */
+.topic-orbit,.art-halo,.interlude-orb,.stack{z-index:3}
+.interlude-ring{position:relative;z-index:3}
+.topic-center,.film-frame,.contact-core{z-index:4}
+.film-play{z-index:5}

@@ -14,6 +14,15 @@
 @media(max-width:390px){.hero-actions{align-items:flex-start;flex-direction:column;gap:18px}.hero-foot{font-size:7px}.section-meta{letter-spacing:.12em}.brand{font-size:10px}.topic-detail-visual{height:270px}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1!important;transform:none!important}}
 
-/* Brand mark: signature red on the landing page, clean white on interior pages. */
-body[data-page="home"] .brand-mark svg{stroke:var(--red)}
-body:not([data-page="home"]) .brand-mark svg{stroke:#f4f2ee}
+
+/* Scroll-reactive 3D material pass */
+.brand-mark svg{stroke:var(--red)!important}
+body:not([data-page="home"]) .brand-mark svg{stroke:var(--red)!important}
+.ra-3d-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:3;pointer-events:none}
+.hero-art,.page-hero-art,.interlude-art,.pillar-visual,.topic-detail-visual,.about-visual-object,.film-feature-art{isolation:isolate}
+.pillar-visual .visual-shape,.topic-detail-visual .visual-shape{opacity:.22;filter:blur(1px)}
+.interlude-art .interlude-orb{opacity:.25}
+.page-hero-art>span,.interlude-art>span,.pillar-visual>.visual-number,.pillar-visual>.visual-label,.topic-detail-visual>span,.topic-detail-visual>small,.film-feature-art>span{z-index:4}
+.ra-3d-fallback .ra-3d-canvas{display:none}
+@media(max-width:700px){.ra-3d-canvas{opacity:.9}.hero-art,.page-hero-art{opacity:.55}}
+@media(prefers-reduced-motion:reduce){.ra-3d-canvas{opacity:.82}}

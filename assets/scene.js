@@ -1,6 +1,6 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
 (()=>{
- const host=document.createElement('div');host.id='ra-soldier';document.querySelector('.hero')?.appendChild(host);if(!host.parentElement)return;
+ const host=document.createElement('div');host.id='ra-soldier';document.body.appendChild(host);
  const coarse=matchMedia('(pointer:coarse)').matches,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  let renderer;try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:!coarse,powerPreference:'high-performance'});}catch(e){return}
  renderer.setPixelRatio(Math.min(devicePixelRatio||1,coarse?1.25:1.8));renderer.setSize(host.clientWidth,host.clientHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.22;host.appendChild(renderer.domElement);

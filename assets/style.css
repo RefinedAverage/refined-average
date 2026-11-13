@@ -2,15 +2,16 @@
 #ra-soldier{position:absolute;z-index:2;right:2vw;top:11%;width:54vw;height:82%;pointer-events:none;opacity:0;transform:translateY(18px);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease);filter:drop-shadow(0 25px 65px #000)}#ra-soldier.ready{opacity:1;transform:none}#ra-soldier canvas{width:100%;height:100%;display:block}
 @media(max-width:760px){.topbar{height:70px;padding:0 22px}.topbar nav{display:none;position:absolute;top:70px;left:0;right:0;padding:28px;background:#090a0cf5;flex-direction:column;gap:22px}.topbar nav.open{display:flex}.topbar>.top-cta{display:none}.menu{display:block;width:38px;height:38px}.menu i{display:block;height:1px;background:#fff;margin:6px}.hero{min-height:720px;padding:120px 7vw 90px;align-items:flex-start}.hero-copy{width:100%;padding-top:60px}.hero h1{font-size:clamp(4.3rem,17vw,7rem);margin:35px 0 24px}.hero-desc{max-width:340px;font-size:12px}.hero-meta{left:7vw;right:7vw;font-size:7px}.hero-side{display:none}#ra-soldier{width:100vw;height:56%;right:-19vw;top:39%;opacity:0}#ra-soldier.ready{opacity:.78}.story{padding:120px 8vw;grid-template-columns:1fr;gap:35px;min-height:unset}.story-note{margin:0 0 20px 8vw}.protocol-head,.section-top{padding:25px 7vw;font-size:7px}.phase-copy{padding:0 8vw;align-items:center}.phase{left:8vw;width:80vw}.phase h2{font-size:clamp(4rem,16vw,6rem)}.phase-counter{right:8vw;bottom:8vh}.domains{padding:110px 7vw}.domains>h2{font-size:clamp(3.5rem,13vw,5.5rem);margin:40px 0}.domain-grid{grid-template-columns:1fr}.domain-card{min-height:0}.domain-art{height:220px}.domain-card p{min-height:0}.intermission{padding:120px 8vw}.intermission h2{font-size:clamp(4rem,15vw,6rem)}.films{padding:110px 8vw;grid-template-columns:1fr;gap:30px}.film-art{height:330px}.film-frame{width:90%}.closing{padding:120px 8vw;min-height:650px}.closing h2{font-size:clamp(4rem,15vw,6rem)}footer{padding:35px 7vw;grid-template-columns:1fr 1fr;gap:20px}footer>p{display:none}footer small{margin-top:10px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}.phase{transition:none}.domain-card{transition:none}}
 
-/* Persistent cinematic subject: the armored figure remains in the viewport as the scroll story advances. */
-#ra-soldier{position:fixed;top:8vh;right:1vw;width:54vw;height:84vh;z-index:1;opacity:0;pointer-events:none}
-#ra-soldier.ready{opacity:1}
-.story,.protocol,.domains,.intermission,.films,.closing{position:relative;isolation:isolate}
-.story{background:linear-gradient(180deg,rgba(10,11,13,.94),rgba(16,17,20,.9))}
-.protocol{background:rgba(12,13,15,.91)}
-.domains{background:rgba(16,17,20,.92)}
-.intermission{background:radial-gradient(ellipse at 75% 55%,rgba(229,34,44,.10),transparent 42%),rgba(9,10,12,.92)}
-.films{background:rgba(16,17,20,.92)}
-.closing{background:radial-gradient(ellipse at 80% 70%,rgba(229,34,44,.13),transparent 35%),rgba(9,10,12,.93)}
-.story-intro,.story-note,.protocol-head,.phase-copy,.phase-counter,.section-top,.domains>h2,.domain-grid,.intermission>*,.film-copy,.film-art,.closing>*{position:relative;z-index:3}
-@media(max-width:760px){#ra-soldier{position:fixed;top:36vh;right:-22vw;width:100vw;height:58vh;z-index:1;opacity:0}#ra-soldier.ready{opacity:.56}.hero-copy{z-index:4}.story-intro,.story-note,.phase,.domain-card,.film-copy,.closing>*{z-index:3;position:relative}}
+
+/* Close-up cinematic character, confined to the opening hero section. */
+.hero{position:relative;isolation:isolate}
+#ra-soldier{position:absolute;z-index:2;right:-3vw;top:12%;width:61vw;height:86%;pointer-events:none;opacity:0;transform:translateY(14px);transition:opacity 1.3s var(--ease),transform 1.3s var(--ease);filter:drop-shadow(0 25px 65px #000)}
+#ra-soldier.ready{opacity:1;transform:none}
+#ra-soldier canvas{width:100%;height:100%;display:block}
+.hero-copy{z-index:4}
+@media(max-width:760px){
+ #ra-soldier{position:absolute;right:-28vw;top:29%;width:112vw;height:68%;opacity:0}
+ #ra-soldier.ready{opacity:.9}
+ .hero-copy{max-width:90%;padding-top:34px}
+ .hero h1{max-width:90%}
+}

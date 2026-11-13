@@ -1,32 +1,34 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
 (()=>{
- const host=document.createElement('div');host.id='ra-soldier';document.querySelector('.hero')?.appendChild(host);if(!host.parentElement)return;
+ const host=document.querySelector('#ra-figure');if(!host)return;
  const coarse=matchMedia('(pointer:coarse)').matches,reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
  let renderer;try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:!coarse,powerPreference:'high-performance'});}catch(e){return}
- renderer.setPixelRatio(Math.min(devicePixelRatio||1,coarse?1.25:1.8));renderer.setSize(host.clientWidth,host.clientHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.22;host.appendChild(renderer.domElement);
- const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(32,host.clientWidth/host.clientHeight,.1,100);camera.position.set(0,1.25,5.8);camera.zoom=1.18;camera.updateProjectionMatrix();
- scene.add(new THREE.HemisphereLight(0xbfc9d8,0x171014,2));const key=new THREE.DirectionalLight(0xffe5d1,4.2);key.position.set(-4,7,6);scene.add(key);
- const rim=new THREE.SpotLight(0xe5222c,95,18,Math.PI*.28,.55,1.2);rim.position.set(4,4,-3);scene.add(rim);const fill=new THREE.PointLight(0x8094b0,26,12);fill.position.set(-4,1,3);scene.add(fill);
- const red=new THREE.MeshStandardMaterial({color:0x70151b,metalness:.8,roughness:.3,emissive:0x260306,emissiveIntensity:.55}),steel=new THREE.MeshStandardMaterial({color:0x747a80,metalness:.9,roughness:.28}),dark=new THREE.MeshStandardMaterial({color:0x171b20,metalness:.85,roughness:.34}),edge=new THREE.MeshStandardMaterial({color:0xb2b7bb,metalness:.95,roughness:.22}),glow=new THREE.MeshStandardMaterial({color:0xff2635,emissive:0xff1022,emissiveIntensity:3,metalness:.25,roughness:.2}),rubber=new THREE.MeshStandardMaterial({color:0x090b0e,metalness:.2,roughness:.82});
- const root=new THREE.Group();scene.add(root);root.position.set(.28,-.55,0);root.scale.setScalar(1.18);const torso=new THREE.Group();root.add(torso);
- function part(parent,geo,m,pos,rot=[0,0,0],scale){const o=new THREE.Mesh(geo,m);o.position.set(...pos);o.rotation.set(...rot);if(scale)o.scale.set(...scale);parent.add(o);return o}
- const box=(p,m,pos,s,rot)=>part(p,new THREE.BoxGeometry(...s),m,pos,rot),sphere=(p,m,pos,s)=>part(p,new THREE.SphereGeometry(1,32,24),m,pos,[0,0,0],s),capsule=(p,m,pos,r,len,rot=[0,0,0])=>part(p,new THREE.CapsuleGeometry(r,len,6,12),m,pos,rot);
- capsule(torso,rubber,[0,.25,0],.49,.72);sphere(torso,dark,[0,.72,0],[.63,.72,.36]);box(torso,steel,[0,.76,.28],[.92,.62,.18]);box(torso,dark,[0,.79,.39],[.72,.43,.09]);
- for(let i=0;i<3;i++)box(torso,i===1?steel:dark,[0,.53-i*.22,.34],[.69-i*.05,.12,.13],[.05,0,0]);
- part(torso,new THREE.CylinderGeometry(.13,.17,.22,8),red,[0,1.27,.02]);box(torso,glow,[0,1.04,.49],[.24,.035,.025]);capsule(torso,dark,[0,1.4,0],.2,.22);
- const headPivot=new THREE.Group();headPivot.position.set(0,1.48,0);torso.add(headPivot);
- sphere(headPivot,steel,[0,.34,0],[.39,.48,.34]);sphere(headPivot,dark,[0,.35,.09],[.355,.42,.31]);box(headPivot,dark,[0,.22,.34],[.52,.16,.13]);box(headPivot,glow,[0,.43,.365],[.43,.055,.035]);box(headPivot,steel,[0,.71,-.02],[.23,.18,.24],[.12,0,0]);
- for(const side of [-1,1]){part(headPivot,new THREE.CylinderGeometry(.13,.13,.12,12),steel,[side*.37,.31,0],[0,0,Math.PI/2]);box(headPivot,dark,[side*.3,.1,.12],[.13,.23,.23],[0,0,side*-.16]);}
- const arms=[];for(const s of [-1,1]){const arm=new THREE.Group();arm.position.set(s*.7,.92,0);torso.add(arm);arms.push(arm);sphere(arm,dark,[s*.02,-.02,0],[.32,.29,.32]);sphere(arm,steel,[s*.13,-.02,.02],[.34,.26,.33]);box(arm,dark,[s*.14,-.06,.27],[.35,.18,.12],[0,0,s*.18]);capsule(arm,rubber,[s*.25,-.43,0],.16,.48,[0,0,s*-.13]);sphere(arm,steel,[s*.26,-.32,.03],[.21,.25,.22]);box(arm,steel,[s*.28,-.67,.05],[.32,.24,.27],[0,0,s*-.12]);box(arm,dark,[s*.28,-.66,.2],[.2,.12,.1]);sphere(arm,steel,[s*.28,-.83,.1],[.18,.12,.2]);for(let j=0;j<3;j++)box(arm,dark,[s*(.2+j*.08),-.88,.25],[.045,.11,.08]);box(arm,red,[s*.14,.08,.31],[.2,.045,.025],[0,0,s*.12]);}
- box(torso,dark,[0,-.35,0],[.72,.27,.45]);box(torso,steel,[0,-.36,.25],[.26,.17,.08]);const legs=[];
- for(const s of [-1,1]){const leg=new THREE.Group();leg.position.set(s*.27,-.52,0);torso.add(leg);legs.push(leg);capsule(leg,rubber,[0,-.43,0],.22,.62);sphere(leg,steel,[0,-.27,.04],[.28,.27,.3]);box(leg,dark,[0,-.43,.25],[.3,.28,.12]);capsule(leg,rubber,[0,-1.03,0],.17,.55);box(leg,steel,[0,-.83,.18],[.3,.3,.13]);box(leg,dark,[0,-1.32,.13],[.35,.17,.4]);box(leg,steel,[0,-1.43,.2],[.39,.12,.47]);for(let j=0;j<3;j++)box(leg,dark,[0,-1.5,.1+j*.1],[.34,.025,.045]);}
- box(torso,dark,[0,.65,-.42],[.55,.8,.32]);box(torso,steel,[0,.68,-.61],[.36,.55,.08]);for(const s of [-1,1])box(torso,red,[s*.22,.68,-.61],[.035,.34,.035]);part(torso,new THREE.CylinderGeometry(.018,.018,.55,8),steel,[.35,1.35,-.48],[0,0,-.18]);
- for(const s of [-1,1])for(let i=0;i<4;i++)sphere(torso,edge,[s*(.36+i*.025),.92-i*.17,.39],[.018,.018,.018]);
- const ground=new THREE.Mesh(new THREE.CircleGeometry(1.65,64),new THREE.MeshBasicMaterial({color:0xe5222c,transparent:true,opacity:.08,side:THREE.DoubleSide}));ground.rotation.x=-Math.PI/2;ground.position.y=-1.95;root.add(ground);
- const rings=new THREE.Group();scene.add(rings);
- const dust=new THREE.Group();scene.add(dust);for(let i=0;i<45;i++){const p=new THREE.Mesh(new THREE.SphereGeometry(.012+(i%3)*.006,6,6),new THREE.MeshBasicMaterial({color:i%4===0?0xe5222c:0x9ca3ad,transparent:true,opacity:.35}));p.position.set((Math.random()-.5)*5,(Math.random()-.5)*5,(Math.random()-.5)*2);dust.add(p);}
- let target=0,current=0,mouseX=0,mouseY=0,raf=0,last=0,visible=true;const hero=document.querySelector('.hero');const scroll=()=>{const r=hero.getBoundingClientRect(),span=Math.max(1,r.height-innerHeight);target=Math.max(0,Math.min(1,-r.top/span))};addEventListener('scroll',scroll,{passive:true});scroll();if(!coarse)addEventListener('pointermove',e=>{mouseX=e.clientX/innerWidth-.5;mouseY=e.clientY/innerHeight-.5},{passive:true});
+ renderer.setPixelRatio(Math.min(devicePixelRatio||1,coarse?1.25:1.7));renderer.setSize(host.clientWidth,host.clientHeight);renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.12;host.appendChild(renderer.domElement);
+ const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(30,host.clientWidth/host.clientHeight,.1,100);camera.position.set(0,.05,5.3);
+ scene.add(new THREE.HemisphereLight(0xdce4ed,0x17191d,2.1));
+ const key=new THREE.DirectionalLight(0xffffff,4.2);key.position.set(-3,5,5);scene.add(key);
+ const rim=new THREE.DirectionalLight(0xe5222c,3.2);rim.position.set(4,2,-3);scene.add(rim);
+ const fill=new THREE.PointLight(0x8d9baa,2.1,10);fill.position.set(-4,0,3);scene.add(fill);
+ const root=new THREE.Group();scene.add(root);root.position.set(.15,-.12,0);
+ const silver=new THREE.MeshStandardMaterial({color:0xc2c8ce,metalness:.94,roughness:.23});
+ const fallback=new THREE.Group();root.add(fallback);
+ const make=(g,p,s)=>{const m=new THREE.Mesh(g,silver);m.position.set(...p);fallback.add(m);return m};
+ // A restrained sculptural fallback remains visible if the external head model cannot load.
+ make(new THREE.SphereGeometry(.72,64,48),[0,.25,0]).scale.set(.73,1,.68);
+ make(new THREE.CapsuleGeometry(.34,.72,12,24),[0,-.82,-.04]).scale.set(1.15,1,.8);
+ make(new THREE.TorusGeometry(.74,.035,12,96),[0,.25,-.06]).rotation.x=Math.PI/2;
+ const loader=new GLTFLoader();
+ loader.load('https://threejs.org/examples/models/gltf/LeePerrySmith/LeePerrySmith.glb',gltf=>{
+   const model=gltf.scene;model.scale.setScalar(1.38);model.position.set(0,-.25,0);model.rotation.y=-.22;
+   model.traverse(o=>{if(o.isMesh){o.material=silver;o.castShadow=true;o.receiveShadow=true}});
+   fallback.visible=false;root.add(model);root.userData.model=model;host.classList.add('ready');
+ },undefined,()=>{host.classList.add('ready')});
+ const dust=new THREE.Group();scene.add(dust);for(let i=0;i<34;i++){const m=new THREE.Mesh(new THREE.SphereGeometry(.009+(i%3)*.004,8,8),new THREE.MeshBasicMaterial({color:i%5===0?0xe5222c:0xaeb7c1,transparent:true,opacity:.38}));m.position.set((Math.random()-.5)*5,(Math.random()-.5)*4,(Math.random()-.5)*1.5);dust.add(m)}
+ let target=0,current=0,mx=0,my=0,raf=0,last=0,visible=true;const hero=document.querySelector('.hero');
+ const read=()=>{const r=hero.getBoundingClientRect(),span=Math.max(1,r.height-innerHeight);target=Math.max(0,Math.min(1,-r.top/span))};addEventListener('scroll',read,{passive:true});read();
+ if(!coarse)addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
  const resize=()=>{const w=Math.max(1,host.clientWidth),h=Math.max(1,host.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()};new ResizeObserver(resize).observe(host);
- function render(t){raf=0;if(!visible)return;const dt=Math.min(.04,(t-last)/1000||.016);last=t;current+=(target-current)*(1-Math.exp(-dt*4.2));const p=current;root.position.x=.22+mouseX*.035;root.position.y=-.55+Math.sin(t*.0009)*.012;root.rotation.y=-.10+mouseX*.045;root.rotation.x=mouseY*.025;torso.rotation.z=Math.sin(t*.00065)*.006;headPivot.rotation.x=.24-p*.52+Math.sin(t*.0008)*.008;headPivot.rotation.y=-.34-p*.12+mouseX*.035;headPivot.rotation.z=-.035;arms[0].rotation.z=.018+Math.sin(t*.0008)*.008;arms[1].rotation.z=-.018-Math.sin(t*.0008)*.008;camera.position.x=mouseX*.045;camera.position.y=1.25+p*.13+mouseY*.035;camera.position.z=5.8-p*.12;camera.lookAt(.02,1.02+p*.12,0);renderer.render(scene,camera);host.classList.add('ready');if(!reduce||target!==0)raf=requestAnimationFrame(render);}
+ function render(t){raf=0;if(!visible)return;const dt=Math.min(.04,(t-last)/1000||.016);last=t;current+=(target-current)*(1-Math.exp(-dt*3.5));const p=current,model=root.userData.model;root.position.x=.1+mx*.07;root.rotation.y=-.22+p*.52+mx*.08;root.rotation.x=.04+p*.22+my*.05;root.position.y=-.12+p*.2;camera.position.x=mx*.07;camera.position.y=.05+p*.18+my*.05;camera.lookAt(.05,.02+p*.12,0);if(model){model.rotation.y=-.22+p*.56+mx*.08;model.rotation.x=.04+p*.18+my*.05}dust.rotation.y=t*.000025;renderer.render(scene,camera);if(!host.classList.contains('ready'))host.classList.add('ready');if(!reduce||p>.001)raf=requestAnimationFrame(render)}
  function wake(){if(!raf&&visible)raf=requestAnimationFrame(render)}document.addEventListener('visibilitychange',()=>{visible=!document.hidden;if(visible){last=0;wake()}else if(raf){cancelAnimationFrame(raf);raf=0}});addEventListener('pagehide',()=>{if(raf)cancelAnimationFrame(raf);renderer.dispose()},{once:true});wake();
 })();

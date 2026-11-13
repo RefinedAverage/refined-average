@@ -17,3 +17,43 @@
 /* Brand mark: signature red on the landing page, clean white on interior pages. */
 body[data-page="home"] .brand-mark svg{stroke:var(--red)}
 body:not([data-page="home"]) .brand-mark svg{stroke:#f4f2ee}
+
+
+/* Scroll-driven comic story: one focused cinematic section, not a site-wide effect. */
+.comic-scroll{height:285vh;position:relative;background:#0b0b0b;border-block:1px solid rgba(255,255,255,.08);--story-progress:0}
+.comic-scroll-sticky{height:100svh;min-height:650px;position:sticky;top:0;overflow:hidden;display:flex;flex-direction:column;padding:25px max(28px,calc((100% - var(--max))/2)) 22px;background:radial-gradient(ellipse at 72% 55%,rgba(229,35,44,.075),transparent 38%),#0b0b0b}
+.comic-scroll-head{display:flex;justify-content:space-between;gap:20px;color:#777;font-size:8px;font-weight:700;letter-spacing:.17em}
+.comic-scroll-head b{color:var(--red);font-size:14px;margin-left:8px}
+.comic-scroll-stage{flex:1;min-height:0;display:grid;grid-template-columns:.78fr 1.22fr;align-items:center;gap:5%;position:relative}
+.comic-scroll-copy{position:relative;z-index:5;max-width:390px;padding-bottom:4vh}
+.comic-scroll-copy h2{font:600 clamp(3.5rem,6.2vw,6.4rem)/.98 'Manrope',sans-serif;letter-spacing:-.08em;margin:24px 0}
+.comic-scroll-copy h2 em{font-style:normal;color:var(--red)}
+.comic-scroll-lede{max-width:300px;color:#999;font-size:13px;line-height:1.9}
+.comic-scroll-count{display:flex;align-items:center;gap:12px;margin-top:42px;color:#666;font:700 9px 'Manrope';letter-spacing:.12em}
+.comic-scroll-count .comic-current{color:var(--red);font-size:18px}
+.comic-scroll-count i{width:80px;height:1px;background:linear-gradient(90deg,var(--red) 0 33%,#454545 33%)}
+.comic-panels{height:min(65vh,570px);min-height:390px;position:relative;perspective:1200px;transform-style:preserve-3d}
+.comic-panel{position:absolute;inset:0;display:flex;flex-direction:column;padding:18px;background:#151617;border:1px solid rgba(255,255,255,.18);box-shadow:0 28px 80px rgba(0,0,0,.55);transform-origin:50% 70%;will-change:transform,opacity;transition:none}
+.comic-panel-one{transform:translate3d(calc((1 - var(--story-progress))*0px),calc(var(--story-progress)*-28px),0) rotate(-3deg) scale(calc(1 - var(--story-progress)*.12));opacity:calc(1 - var(--story-progress)*1.5);z-index:3}
+.comic-panel-two{transform:translate3d(calc((1 - var(--story-progress))*38px),calc((1 - var(--story-progress))*35px),0) rotate(calc(3deg - var(--story-progress)*3deg)) scale(calc(.88 + var(--story-progress)*.12));opacity:clamp(0,calc((var(--story-progress) - .18)*2.2),1);z-index:4}
+.comic-panel-three{transform:translate3d(calc((1 - var(--story-progress))*70px),calc((1 - var(--story-progress))*55px),0) rotate(calc(5deg - var(--story-progress)*5deg)) scale(calc(.82 + var(--story-progress)*.18));opacity:clamp(0,calc((var(--story-progress) - .62)*2.6),1);z-index:5}
+.comic-panel-no{font-size:8px;letter-spacing:.16em;color:#888}
+.comic-art{position:relative;flex:1;min-height:0;margin:16px 0;background:#202223;overflow:hidden;isolation:isolate}
+.comic-art:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 38%),repeating-linear-gradient(0deg,transparent 0 31px,rgba(255,255,255,.035) 32px)}
+.comic-art>b{position:absolute;z-index:4;left:7%;bottom:8%;font:800 clamp(2.8rem,6vw,5.8rem)/.85 'Manrope';letter-spacing:-.09em;color:#f4f2ee;text-shadow:0 5px 25px #000}
+.comic-panel>p{font-size:11px;line-height:1.7;color:#aaa;margin:0;min-height:35px}
+.comic-sun{position:absolute;width:35%;aspect-ratio:1;border-radius:50%;right:13%;top:13%;background:radial-gradient(circle at 35% 30%,#f3e6d6,#77716b 42%,#242525 72%);box-shadow:0 0 80px rgba(229,35,44,.16)}
+.comic-person{position:absolute;bottom:0;left:42%;width:15%;height:49%;border-radius:45% 45% 5% 5%;background:linear-gradient(90deg,#080909,#55595a 48%,#111);clip-path:polygon(35% 0,65% 0,78% 24%,100% 100%,0 100%,22% 24%)}
+.comic-ground{position:absolute;bottom:0;left:0;right:0;height:19%;background:linear-gradient(170deg,#444,#090909 65%)}
+.art-choice{background:linear-gradient(120deg,#17191a 0 48%,#3b171a 48% 51%,#111 51%)}
+.comic-door{position:absolute;right:19%;top:9%;height:82%;width:35%;border:2px solid #777;background:linear-gradient(90deg,#111,#3b3d3e 70%,#090909);transform:perspective(500px) rotateY(-17deg);box-shadow:18px 0 40px #000}
+.comic-light{position:absolute;right:3%;top:8%;height:84%;width:34%;background:linear-gradient(90deg,rgba(229,35,44,.3),rgba(255,230,205,.65),transparent);filter:blur(22px)}
+.art-move{background:radial-gradient(ellipse at 60% 50%,#482024,#141617 58%,#090909)}
+.comic-orb{position:absolute;width:43%;aspect-ratio:1;left:30%;top:18%;border-radius:50%;background:radial-gradient(circle at 30% 25%,#e6e3dc,#666a6a 35%,#151718 70%);box-shadow:inset -25px -28px 45px #000,0 0 90px rgba(229,35,44,.4)}
+.comic-trail{position:absolute;width:90%;height:50%;left:7%;top:24%;border:1px solid rgba(229,35,44,.7);border-radius:50%;transform:rotate(-28deg);box-shadow:0 0 30px rgba(229,35,44,.25)}
+.comic-scroll-side{position:absolute;right:0;bottom:5%;writing-mode:vertical-rl;font-size:7px;letter-spacing:.2em;color:#646562}
+.comic-scroll-side span{color:var(--red);padding:10px 0}
+.comic-scroll-progress{height:2px;background:rgba(255,255,255,.09);margin-top:15px}
+.comic-scroll-progress i{display:block;width:calc(var(--story-progress)*100%);height:100%;background:var(--red);box-shadow:0 0 12px rgba(229,35,44,.7)}
+@media(max-width:700px){.comic-scroll{height:245vh}.comic-scroll-sticky{min-height:620px;padding:20px 22px 18px}.comic-scroll-head{font-size:7px}.comic-scroll-stage{grid-template-columns:1fr;grid-template-rows:auto 1fr;gap:8px;padding:25px 0}.comic-scroll-copy{padding:0;max-width:100%}.comic-scroll-copy .eyebrow{font-size:7px}.comic-scroll-copy h2{font-size:clamp(3rem,13vw,4.3rem);margin:12px 0}.comic-scroll-lede{font-size:11px;margin:0;max-width:270px}.comic-scroll-count{margin-top:12px}.comic-panels{height:100%;min-height:250px;max-height:38vh;margin:0 2px 0 8px}.comic-panel{padding:11px}.comic-art{margin:9px 0}.comic-art>b{font-size:clamp(2.5rem,12vw,4rem)}.comic-panel>p{font-size:9px}.comic-scroll-side{right:-3px;bottom:6%;font-size:6px}}
+@media(prefers-reduced-motion:reduce){.comic-scroll{height:auto}.comic-scroll-sticky{height:auto;min-height:0;position:relative}.comic-scroll-stage{padding:50px 0}.comic-panel{position:relative;opacity:1!important;transform:none!important;display:none}.comic-panel-one{display:flex}.comic-scroll-progress{display:none}}

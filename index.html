@@ -9,18 +9,19 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=full-redesign-01">
+<link rel="stylesheet" href="assets/style.css?v=motion-02">
+<script>document.documentElement.classList.add("js");matchMedia("(pointer:fine)").matches&&document.documentElement.classList.add("fine")</script>
 </head>
 <body>
 <div class="scroll-progress"><span></span></div>
-<div class="grain"></div>
+<div class="loader" aria-hidden="true"><p>Refined Average<br>Loading the study</p><b id="count">0</b></div>
+<div class="cur" aria-hidden="true"><span></span></div>
 <header class="site-header">
-  <a class="brand" href="#top" aria-label="Refined Average home"><strong>RA<span>.</span></strong><small>REFINED<br>AVERAGE</small></a>
+  <a class="brand" href="#top" aria-label="Refined Average home"><strong class="brand-lockup"><svg class="signal-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M7 17C16 8 32 8 41 17M13 24C19 18 29 18 35 24M19 31C22 28 26 28 29 31M24 36v1M8 8l32 32"/></svg><span>RA<span>.</span></span></strong><small>REFINED<br>AVERAGE</small></a>
   <nav class="main-nav"><a href="#philosophy">PHILOSOPHY</a><a href="#method">THE METHOD</a><a href="#films">FILMS</a></nav>
   <a class="header-link" href="https://www.youtube.com/@RefinedAverage" target="_blank" rel="noopener">WATCH RA <span>↗</span></a>
   <button class="menu-toggle" aria-label="Open menu"><i></i><i></i></button>
 </header>
-
 <main id="top">
   <section class="hero" aria-label="Introduction">
     <div class="hero-grid"></div>
@@ -35,7 +36,7 @@
     <div class="scroll-cue"><span>SCROLL TO EXPLORE</span><i></i></div>
     <div id="ra-figure" aria-hidden="true"></div>
   </section>
-
+  <div class="marquee" aria-hidden="true"><div class="mq-track"></div></div>
   <section class="manifesto section" id="philosophy">
     <div class="section-kicker"><span>01 — THE PHILOSOPHY</span><span>START WITH AWARENESS</span></div>
     <div class="manifesto-layout">
@@ -44,7 +45,6 @@
     </div>
     <div class="manifesto-bottom"><span>01 / NOTICE</span><span>02 / UNDERSTAND</span><span>03 / REBUILD</span><span>04 / BECOME</span></div>
   </section>
-
   <section class="method section" id="method">
     <div class="section-kicker"><span>02 — THE METHOD</span><span>A CONTINUOUS PROCESS</span></div>
     <div class="method-stage">
@@ -58,14 +58,12 @@
       <div class="method-progress"><span>PROCESS</span><i><u></u></i><b>01 — 04</b></div>
     </div>
   </section>
-
   <section class="interlude">
     <p class="eyebrow">A NOTE TO SELF</p>
     <h2>Small actions.<br><em>Different outcomes.</em></h2>
     <p>You are shaped by what you repeatedly do — especially when nobody is watching.</p>
     <span>THE WORK IS QUIET. THE CHANGE IS NOT.</span>
   </section>
-
   <section class="films section" id="films">
     <div class="section-kicker"><span>03 — THE CHANNEL</span><span>IDEAS TO PUT INTO PRACTICE</span></div>
     <div class="films-layout">
@@ -73,7 +71,6 @@
       <a class="film-object" href="https://www.youtube.com/@RefinedAverage" target="_blank" rel="noopener" aria-label="Watch Refined Average on YouTube"><span class="film-top">RA / ORIGINAL FILMS</span><strong>THE<br>PROCESS<span>.</span></strong><span class="film-play">PLAY FILMS ↗</span><i class="film-orbit orbit-one"></i><i class="film-orbit orbit-two"></i></a>
     </div>
   </section>
-
   <section class="closing">
     <p class="eyebrow">YOUR NEXT CHAPTER STARTS WITH A CHOICE</p>
     <h2>Become<br>by <em>design.</em></h2>
@@ -81,9 +78,12 @@
     <div class="closing-mark">RA<span>.</span></div>
   </section>
 </main>
-
-<footer class="site-footer"><a class="brand" href="#top"><strong>RA<span>.</span></strong><small>REFINED<br>AVERAGE</small></a><p>DISCIPLINE / PSYCHOLOGY / GROWTH</p><a href="https://www.youtube.com/@RefinedAverage" target="_blank" rel="noopener">YOUTUBE ↗</a><small class="copyright">© <span data-year></span> REFINED AVERAGE. BUILT BY INTENTION.</small></footer>
-<script type="module" src="assets/scene.js?v=full-redesign-01"></script>
-<script src="assets/script.js?v=full-redesign-01" defer></script>
+<footer class="site-footer"><a class="brand" href="#top"><strong class="brand-lockup"><svg class="signal-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M7 17C16 8 32 8 41 17M13 24C19 18 29 18 35 24M19 31C22 28 26 28 29 31M24 36v1M8 8l32 32"/></svg><span>RA<span>.</span></span></strong><small>REFINED<br>AVERAGE</small></a><p>DISCIPLINE / PSYCHOLOGY / GROWTH</p><a href="https://www.youtube.com/@RefinedAverage" target="_blank" rel="noopener">YOUTUBE ↗</a><small class="copyright">© <span data-year></span> REFINED AVERAGE. BUILT BY INTENTION.</small></footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<script src="assets/script.js?v=motion-02" defer></script>
+<script type="module" src="assets/scene.js?v=motion-02"></script>
+<script>setTimeout(function(){window.__ra||document.documentElement.classList.remove("js")},7000)</script>
 </body>
 </html>

@@ -90,3 +90,11 @@ h2{font-size:clamp(2.8rem,8vw,8.5rem)}
 /* Ensure the red crossed-signal mark is drawn as strokes in every placement. */
 .brand .signal-mark{fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
 .closing-mark .signal-mark{fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+
+/* RA wordmark: clean white ligature with a signature red full stop. */
+.brand .brand-lockup{display:inline-block;color:var(--ink);font-family:var(--sans);font-size:2rem;font-weight:800;letter-spacing:-.16em;line-height:1;white-space:nowrap}
+.brand .brand-lockup span{display:inline-block;color:var(--red);letter-spacing:0;margin-left:.055em}
+.brand small{display:none}
+.closing-mark{position:absolute;inset:auto 0 -4.5vw;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--sans);font-size:clamp(14rem,48vw,54rem);font-weight:800;letter-spacing:-.17em;line-height:.72;color:var(--ink);pointer-events:none;user-select:none;white-space:nowrap}
+.closing-mark span{color:var(--red);letter-spacing:0;margin-left:.04em}
+@media(max-width:900px){.brand .brand-lockup{font-size:1.85rem}}

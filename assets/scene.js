@@ -14,7 +14,6 @@ import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/
  const silver=new THREE.MeshStandardMaterial({color:0xc2c8ce,metalness:.94,roughness:.23});
  const fallback=new THREE.Group();root.add(fallback);
  const make=(g,p,s)=>{const m=new THREE.Mesh(g,silver);m.position.set(...p);fallback.add(m);return m};
- // A restrained sculptural fallback remains visible if the external head model cannot load.
  make(new THREE.SphereGeometry(.72,64,48),[0,.25,0]).scale.set(.73,1,.68);
  make(new THREE.CapsuleGeometry(.34,.72,12,24),[0,-.82,-.04]).scale.set(1.15,1,.8);
  make(new THREE.TorusGeometry(.74,.035,12,96),[0,.25,-.06]).rotation.x=Math.PI/2;
@@ -26,7 +25,7 @@ import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/
  },undefined,()=>{host.classList.add('ready')});
  const dust=new THREE.Group();scene.add(dust);for(let i=0;i<34;i++){const m=new THREE.Mesh(new THREE.SphereGeometry(.009+(i%3)*.004,8,8),new THREE.MeshBasicMaterial({color:i%5===0?0xe5222c:0xaeb7c1,transparent:true,opacity:.38}));m.position.set((Math.random()-.5)*5,(Math.random()-.5)*4,(Math.random()-.5)*1.5);dust.add(m)}
  let target=0,current=0,mx=0,my=0,raf=0,last=0,visible=true;const hero=document.querySelector('.hero');
- const read=()=>{const r=hero.getBoundingClientRect(),span=Math.max(1,r.height-innerHeight);target=Math.max(0,Math.min(1,-r.top/span))};addEventListener('scroll',read,{passive:true});read();
+ const read=()=>{const r=hero.getBoundingClientRect(),span=Math.max(1,r.height);target=Math.max(0,Math.min(1,-r.top/span))};addEventListener('scroll',read,{passive:true});read();
  if(!coarse)addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
  const resize=()=>{const w=Math.max(1,host.clientWidth),h=Math.max(1,host.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()};new ResizeObserver(resize).observe(host);
  function render(t){raf=0;if(!visible)return;const dt=Math.min(.04,(t-last)/1000||.016);last=t;current+=(target-current)*(1-Math.exp(-dt*3.5));const p=current,model=root.userData.model;root.position.x=.1+mx*.07;root.rotation.y=-.22+p*.52+mx*.08;root.rotation.x=.04+p*.22+my*.05;root.position.y=-.12+p*.2;camera.position.x=mx*.07;camera.position.y=.05+p*.18+my*.05;camera.lookAt(.05,.02+p*.12,0);if(model){model.rotation.y=-.22+p*.56+mx*.08;model.rotation.x=.04+p*.18+my*.05}dust.rotation.y=t*.000025;renderer.render(scene,camera);if(!host.classList.contains('ready'))host.classList.add('ready');if(!reduce||p>.001)raf=requestAnimationFrame(render)}

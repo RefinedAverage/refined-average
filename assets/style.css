@@ -86,3 +86,7 @@ h2{font-size:clamp(2.8rem,8vw,8.5rem)}
  .manifesto-bottom{grid-template-columns:1fr 1fr}.method-item{opacity:.4}
 }
 @media (prefers-reduced-motion:reduce){.loader{display:none!important}.live-dot,.scroll-cue i{animation:none}*{transition-duration:.01ms!important}}
+
+/* Ensure the red crossed-signal mark is drawn as strokes in every placement. */
+.brand .signal-mark{fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
+.closing-mark .signal-mark{fill:none;stroke:currentColor;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}

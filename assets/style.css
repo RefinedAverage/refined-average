@@ -98,3 +98,28 @@ h2{font-size:clamp(2.8rem,8vw,8.5rem)}
 .closing-mark{position:absolute;inset:auto 0 -4.5vw;display:flex;align-items:center;justify-content:center;text-align:center;font-family:var(--sans);font-size:clamp(14rem,48vw,54rem);font-weight:800;letter-spacing:-.17em;line-height:.72;color:var(--ink);pointer-events:none;user-select:none;white-space:nowrap}
 .closing-mark span{color:var(--red);letter-spacing:0;margin-left:.04em}
 @media(max-width:900px){.brand .brand-lockup{font-size:1.85rem}}
+
+
+/* Closing signature: keep the RA wordmark discreet and clear of the headline. */
+.closing-mark{
+  inset:auto 0 2rem;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.35rem;
+  letter-spacing:-.12em;
+  line-height:1;
+  color:var(--mute);
+  opacity:.55;
+  -webkit-text-stroke:0;
+  z-index:0;
+}
+.closing-mark span{
+  color:var(--red);
+  -webkit-text-stroke:0;
+  margin-left:.04em;
+}
+@media(max-width:600px){
+  .closing-mark{font-size:1.15rem;bottom:1.4rem}
+  .closing{padding-bottom:5rem}
+}
